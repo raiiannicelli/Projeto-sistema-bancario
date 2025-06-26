@@ -1,14 +1,21 @@
 //Ricardo Lima 2565510
 //Geisily Varga 2478404;
-//Raí I. Morato;
+//Raí I. Morato 2623420;
 
 package br.com.banco.controle;
-
 import java.util.List;
+
 import br.com.banco.modelo.ContaBancaria;
 
+/**
+ * SRP: Gerencia operações de conta (adicionar, buscar, sacar, depositar, transferir, excluir)
+ * OCP: Pode ser estendida para novas operações sem alterar métodos existentes
+ */
 public class GerenciadorDeContas {
 
+    // SRP: Cada método tem uma responsabilidade clara sobre operações de conta
+    // OCP: Novos métodos podem ser adicionados sem modificar os existentes
+    // LSP: Métodos usam ContaBancaria e suas subclasses de forma polimórfica
     public static boolean adicionarConta(ContaBancaria conta) {
         return BancoDeDados.adicionarConta(conta);
     }
@@ -95,5 +102,24 @@ public class GerenciadorDeContas {
 
     public static List<ContaBancaria> listarContas() {
         return BancoDeDados.listarTodasContas();
+    }
+    
+    public static boolean excluirConta(String numeroConta, String agencia) {
+        // Verificar se a conta existe antes de tentar excluir
+        ContaBancaria conta = buscarConta(numeroConta, agencia);
+        if (conta == null) {
+            return false;
+        }
+        
+        // Verificar se a conta tem saldo zero antes de permitir exclusão
+        if (conta.getSaldo() > 0) {
+            return false;
+        }
+        
+        return BancoDeDados.excluirConta(numeroConta, agencia);
+    }
+
+    public static boolean atualizarTipoConta(String numeroConta, String agencia, String novoTipo) {
+        return BancoDeDados.atualizarTipoConta(numeroConta, agencia, novoTipo);
     }
 }

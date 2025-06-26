@@ -1,12 +1,12 @@
 //Ricardo Lima 2565510
 //Geisily Varga 2478404;
-//Raí I. Morato;
-package br.com.banco;
+//Raí I. Morato 2623420;
 
+package br.com.banco;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import br.visao.FormEntrarConta;
+import br.com.banco.visao.*;
 
 public class Main {
     public static void main(String[] args) {

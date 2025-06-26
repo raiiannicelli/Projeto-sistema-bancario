@@ -1,8 +1,10 @@
 //Ricardo Lima 2565510
 //Geisily Varga 2478404;
-//Raí I. Morato;
+//Raí I. Morato 2623420;
 
 package br.com.banco.controle;
+
+import br.com.banco.modelo.ContaBancaria;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,8 +15,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.banco.modelo.ContaBancaria;
-
+/**
+ * SRP: Gerencia apenas o acesso ao banco de dados (CRUD)
+ * OCP: Pode ser estendida para novos métodos de acesso sem alterar os existentes
+ */
 public class BancoDeDados {
     private static final String URL = "jdbc:postgresql://localhost:5432/crudbank";
     private static final String USER = "localhost";
@@ -39,7 +43,7 @@ public class BancoDeDados {
              Statement stmt = conn.createStatement()) {
             
             // Criar tabela de contas
-            String sqlCriarTabela = 
+            String sqlCriarTabela =
                 "CREATE TABLE IF NOT EXISTS contas (" +
                 "id INTEGER AUTO_INCREMENT PRIMARY KEY," +
                 "numero_conta VARCHAR(20) NOT NULL," +
@@ -160,6 +164,21 @@ public class BancoDeDados {
         }
     }
     
+    public static boolean atualizarTipoConta(String numeroConta, String agencia, String novoTipo) {
+        String sql = "UPDATE contas SET tipo_conta = ? WHERE numero_conta = ? AND agencia = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, novoTipo);
+            pstmt.setString(2, numeroConta);
+            pstmt.setString(3, agencia);
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar tipo de conta: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public static List<ContaBancaria> listarTodasContas() {
         List<ContaBancaria> contas = new ArrayList<>();
         String sql = "SELECT * FROM contas ORDER BY numero_conta";
@@ -177,6 +196,24 @@ public class BancoDeDados {
         }
         
         return contas;
+    }
+    
+    public static boolean excluirConta(String numeroConta, String agencia) {
+        String sql = "DELETE FROM contas WHERE numero_conta = ? AND agencia = ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, numeroConta);
+            pstmt.setString(2, agencia);
+            
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+            
+        } catch (SQLException e) {
+            System.err.println("Erro ao excluir conta: " + e.getMessage());
+            return false;
+        }
     }
     
     private static ContaBancaria criarContaDoResultSet(ResultSet rs) throws SQLException {
