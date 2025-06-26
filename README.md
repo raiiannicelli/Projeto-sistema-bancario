@@ -75,8 +75,7 @@ java -jar target/ProjetoFinal-1.0-SNAPSHOT.jar
 ```
 
 ## Estrutura do Projeto
-
-```
+``
 ProjetoFinal/
 ├── .github/                   # Configurações de CI/CD e templates
 │   └── workflows/maven.yml    # GitHub Actions
@@ -100,7 +99,7 @@ ProjetoFinal/
 │                   ├── FormSaldo.java
 │                   └── FormSacar.java
 └── target/                    # Build artifacts
-```
+``
 
 ## Uso
 
