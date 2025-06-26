@@ -74,32 +74,39 @@ mvn package
 java -jar target/ProjetoFinal-1.0-SNAPSHOT.jar
 ```
 
-## Estrutura do Projeto
-``
+## Estrutura de Diretórios
+
+```text
 ProjetoFinal/
-├── .github/                   # Configurações de CI/CD e templates
-│   └── workflows/maven.yml    # GitHub Actions
+├── .github/                       # Configurações de workflows e templates
+│   └── workflows/
+│       └── maven.yml             # Pipeline de build/teste com Maven
 ├── src/
 │   └── main/
 │       └── java/
-│           └── br/com/banco/
-│               ├── AbstractTableModel.java   # Modelo de relatório
-│               ├── BancoDeDados.java         # Conexão H2
-│               ├── ContaBancaria.java        # Base de contas
-│               ├── ContaCorrente.java        # Conta corrente
-│               ├── ContaPoupanca.java        # Conta poupança
-│               ├── ContaSalario.java         # Conta salário
-│               ├── GerenciadorDeContas.java  # Regras de negócio
-│               ├── Main.java                 # Entry point
-│               └── visao/                    # Telas Swing
-│                   ├── FormCadConta.java
-│                   ├── FormEntrarConta.java
-│                   ├── FormPix.java
-│                   ├── FormRelContas.java
-│                   ├── FormSaldo.java
-│                   └── FormSacar.java
-└── target/                    # Build artifacts
-``
+│           └── br/
+│               └── com/
+│                   └── banco/
+│                       ├── AbstractTableModel.java     # Modelo de dados para tabelas
+│                       ├── BancoDeDados.java           # Conexão e manipulação do banco H2
+│                       ├── ContaBancaria.java          # Classe abstrata de conta
+│                       ├── ContaCorrente.java          # Conta do tipo Corrente
+│                       ├── ContaPoupanca.java          # Conta do tipo Poupança
+│                       ├── ContaSalario.java           # Conta do tipo Salário
+│                       ├── GerenciadorDeContas.java    # Regras de negócio bancário
+│                       ├── Main.java                   # Ponto de entrada da aplicação
+│                       └── visao/                      # Telas e componentes Swing
+│                           ├── FormCadConta.java       # Tela de cadastro de contas
+│                           ├── FormEntrarConta.java    # Tela de login de contas
+│                           ├── FormPix.java            # Tela para transferência PIX
+│                           ├── FormRelContas.java      # Tela de relatórios
+│                           ├── FormSaldo.java          # Tela de exibição de saldo
+│                           └── FormSacar.java          # Tela de saque
+├── target/                        # Artefatos gerados pelo build (JARs, classes compiladas)
+├── pom.xml                        # Configuração do projeto Maven
+├── README.md                      # Documentação principal do projeto
+└── LICENSE                        # Licença do projeto
+```
 
 ## Uso
 
