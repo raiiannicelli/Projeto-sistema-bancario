@@ -51,6 +51,7 @@ java -jar target/ProjetoFinal-1.0-SNAPSHOT.jar
 4. Visualize relatórios e consulte saldo em tempo real.
 
 ## Estrutura de Diretórios
+``
 ProjetoFinal/                      # Pasta do projeto
 ├── .github/                       # Configurações de workflows e templates
 │   └── workflows/                 # Workflows 
@@ -81,3 +82,4 @@ ProjetoFinal/                      # Pasta do projeto
 ├── pom.xml                        # Configuração do projeto Maven
 ├── README.md                      # Documentação principal do projeto
 └── LICENSE                        # Licença do projeto
+``
