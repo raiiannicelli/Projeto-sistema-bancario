@@ -1,7 +1,6 @@
 # Sistema Bancário - Projeto Final
 
 ## Sumário
-
 * [Sobre](#sobre)
 * [Funcionalidades](#funcionalidades)
 * [Pré-requisitos](#pré-requisitos)
@@ -11,11 +10,9 @@
 * [Prática de execução](#uso)
 
 ## Sobre
-
 Este repositório contém o **Sistema Bancário**, desenvolvido em **Java** com interface **Swing** e persistência via **PostgresSql**. O sistema permite gestão de contas bancárias, operações financeiras (depósito, saque, PIX) e geração de relatórios.
 
 ## Funcionalidades
-
 * Cadastro e autenticação de contas (Corrente, Poupança, Salário)
 * Depósito em conta
 * Saque de conta
@@ -24,39 +21,36 @@ Este repositório contém o **Sistema Bancário**, desenvolvido em **Java** com 
 * Geração de relatório de contas
 
 ## Pré-requisitos
-
 * Java 17 ou superior
 * Maven 3.6+
 * Swing
 * Git
 
 ## Instalação
-
 ## Clone este repositório
 ```
 git clone https://github.com/usuario/ProjetoFinal.git
 ```
-
 ## Acesse a pasta do projeto
 ```
 cd ProjetoFinal
 ```
-
-## Execução
-
 ## Gere o pacote
 ```
 mvn package
 ```
-
 ## Execute o JAR
 ```
 java -jar target/ProjetoFinal-1.0-SNAPSHOT.jar
 ```
 
-## Estrutura de Diretórios
+## Testando execução
+1. Inicie o programa.
+2. Cadastre ou selecione uma conta.
+3. Realize operações financeiras pelos botões disponíveis.
+4. Visualize relatórios e consulte saldo em tempo real.
 
-```
+## Estrutura de Diretórios
 ProjetoFinal/                      # Pasta do projeto
 ├── .github/                       # Configurações de workflows e templates
 │   └── workflows/                 # Workflows 
@@ -87,11 +81,3 @@ ProjetoFinal/                      # Pasta do projeto
 ├── pom.xml                        # Configuração do projeto Maven
 ├── README.md                      # Documentação principal do projeto
 └── LICENSE                        # Licença do projeto
-```
-
-## Testando execução
-
-1. Inicie o programa.
-2. Cadastre ou selecione uma conta.
-3. Realize operações financeiras pelos botões disponíveis.
-4. Visualize relatórios e consulte saldo em tempo real.
