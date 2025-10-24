@@ -29,7 +29,7 @@ Este repositório contém o **Sistema Bancário**, desenvolvido em **Java** com 
 ## Instalação
 ## Clone este repositório
 ```
-git clone https://github.com/usuario/ProjetoFinal.git
+git clone https://github.com/raiiannicelli/Projeto-sistema-bancario
 ```
 ## Acesse a pasta do projeto
 ```
