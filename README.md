@@ -33,7 +33,7 @@ git clone https://github.com/raiiannicelli/Projeto-sistema-bancario
 ```
 ## Acesse a pasta do projeto
 ```
-cd ProjetoFinal
+cd Projeto-sistema-bancario
 ```
 ## Gere o pacote
 ```
