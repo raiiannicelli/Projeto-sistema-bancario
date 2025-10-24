@@ -37,11 +37,15 @@ cd ProjetoFinal
 ```
 ## Gere o pacote
 ```
-mvn package
+mvn clean package
 ```
-## Execute o JAR
+## Execute com JAR 
 ```
-java -jar target/ProjetoFinal-1.0-SNAPSHOT.jar
+java -jar target/CRUD-bank-1.0-SNAPSHOT.jar
+```
+## Execute com ClassPath
+```
+mvn exec:java
 ```
 
 ## Testando execução
