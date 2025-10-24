@@ -32,31 +32,31 @@ Este repositório contém o **Sistema Bancário**, desenvolvido em **Java** com 
 
 ## Instalação
 
-# Clone este repositório
-```bash
+## Clone este repositório
+```
 git clone https://github.com/usuario/ProjetoFinal.git
 ```
 
-# Acesse a pasta do projeto
-```bash
+## Acesse a pasta do projeto
+```
 cd ProjetoFinal
 ```
 
 ## Execução
 
-# Gere o pacote
-```bash
+## Gere o pacote
+```
 mvn package
 ```
 
-# Execute o JAR
-```bash
+## Execute o JAR
+```
 java -jar target/ProjetoFinal-1.0-SNAPSHOT.jar
 ```
 
 ## Estrutura de Diretórios
 
-```text
+```
 ProjetoFinal/                      # Pasta do projeto
 ├── .github/                       # Configurações de workflows e templates
 │   └── workflows/                 # Workflows 
