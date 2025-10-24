@@ -5,6 +5,7 @@
 package br.com.banco.controle;
 
 import br.com.banco.modelo.ContaBancaria;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,20 +21,22 @@ import java.util.List;
  * OCP: Pode ser estendida para novos métodos de acesso sem alterar os existentes
  */
 public class BancoDeDados {
-    private static final String URL = "jdbc:postgresql://localhost:5432/crudbank";
-    private static final String USER = "localhost";
-    private static final String PASSWORD = "bank-inter";
-    private static final String driverJDBC = "org.postgresql.Driver";
-    
+    // Carregar variáveis de ambiente uma única vez como estáticas
+    private static final Dotenv DOTENV = Dotenv.load();
+    private static final String DRIVER_JDBC = DOTENV.get("driverJDBC");
+    private static final String URL = DOTENV.get("URL");
+    private static final String USER = DOTENV.get("USER");
+    private static final String PASSWORD = DOTENV.get("PASSWORD");
+
     static {
         try {
-            Class.forName(driverJDBC);
+            Class.forName(DRIVER_JDBC);
         } catch (ClassNotFoundException e) {
             System.err.println("Driver JDBC não encontrado: " + e.getMessage());
         }
         inicializarBanco();
     }
-    
+
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
@@ -45,14 +48,14 @@ public class BancoDeDados {
             // Criar tabela de contas
             String sqlCriarTabela =
                 "CREATE TABLE IF NOT EXISTS contas (" +
-                "id INTEGER AUTO_INCREMENT PRIMARY KEY," +
-                "numero_conta VARCHAR(20) NOT NULL," +
-                "agencia VARCHAR(10) NOT NULL," +
-                "titular VARCHAR(100) NOT NULL," +
-                "tipo_conta VARCHAR(20) NOT NULL," +
-                "saldo DOUBLE NOT NULL DEFAULT 0.0," +
-                "UNIQUE(numero_conta, agencia)" +
-                ")";
+                    "id SERIAL PRIMARY KEY," +
+                    "numero_conta VARCHAR(20) NOT NULL," +
+                    "agencia VARCHAR(10) NOT NULL," +
+                    "titular VARCHAR(100) NOT NULL," +
+                    "tipo_conta VARCHAR(20) NOT NULL," +
+                    "saldo DOUBLE PRECISION NOT NULL DEFAULT 0.0," +
+                    "UNIQUE(numero_conta, agencia)" +
+                    ")";
             
             stmt.execute(sqlCriarTabela);
             System.out.println("Banco de dados inicializado com sucesso!");
